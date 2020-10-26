@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import Card from '../Card'
 
 const List = React.memo(
-  function List({ tweets }) {
+  React.forwardRef(function List({ tweets }, ref) {
     return (
-      <div>
+      <div ref={ref}>
         {tweets.map((tweet) => (
           <Card key={tweet.id} tweet={tweet} />
         ))}
       </div>
     )
-  },
+  }),
   // on render if the tweets length has changed to prevent wasted render
   // (An issue when we call the .map on 10000 tweets)
   ({ tweets: oldTweets }, { tweets }) => tweets.length === oldTweets.length
