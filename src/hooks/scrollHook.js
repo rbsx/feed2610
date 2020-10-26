@@ -1,0 +1,1 @@
+const useScrollHooks = (handleScroll) => {}
